@@ -1,15 +1,34 @@
 "use client";
-
 import { useState } from 'react';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/Table';
 
 export default function Home() {
   const [showTable, setShowTable] = useState(false);
-  const [weight, setWeight] = useState('');
-  const [reps, setReps] = useState('');
-  const [difficulty, setDifficulty] = useState('');
+  const [rows, setRows] = useState([{ weight: '', reps: '', difficulty: '' }]);
 
   const handleButtonClick = () => setShowTable(true);
+
+  const addRow = () => {
+    setRows([...rows, { weight: '', reps: '', difficulty: '' }]);
+  };
+
+  const handleWeightChange = (value, index) => {
+    const newRows = [...rows];
+    newRows[index].weight = value;
+    setRows(newRows);
+  };
+
+  const handleRepsChange = (value, index) => {
+    const newRows = [...rows];
+    newRows[index].reps = value;
+    setRows(newRows);
+  };
+
+  const handleDifficultyChange = (value, index) => {
+    const newRows = [...rows];
+    newRows[index].difficulty = value;
+    setRows(newRows);
+  };
 
   return (
     <main>
@@ -28,15 +47,28 @@ export default function Home() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell className="font-medium">1</TableCell>
-              <TableCell><input type="text" value={weight} onChange={(e) => setWeight(e.target.value)} /></TableCell>
-              <TableCell><input type="text" value={reps} onChange={(e) => setReps(e.target.value)} /></TableCell>
-              <TableCell className="text-right"><input type="text" value={difficulty} onChange={(e) => setDifficulty(e.target.value)} /></TableCell>
-            </TableRow>
+            {rows.map((row, index) => (
+              <TableRow key={index}>
+                <TableCell className="font-medium">{index + 1}</TableCell>
+                <TableCell><input type="text" value={row.weight} onChange={(e) => handleWeightChange(e.target.value, index)} /></TableCell>
+                <TableCell><input type="text" value={row.reps} onChange={(e) => handleRepsChange(e.target.value, index)} /></TableCell>
+                <TableCell className="text-right">
+                  <select value={row.difficulty} onChange={(e) => handleDifficultyChange(e.target.value, index)}>
+                    <option value="">Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       )}
+
+      <button onClick={addRow}>Add Row</button>
     </main>
   );
 }
