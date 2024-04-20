@@ -96,7 +96,7 @@ export default function Home() {
 
       {showWeightliftingTable && (
         <Table>
-          <TableCaption>WEIGHTLIFTING WORKOUT SUMMARY!!</TableCaption>
+          <TableCaption>WEIGHTLIFTING WORKOUT SUMMARY!!\n ideally this is where the AI will interpret the results based off sthe user inputs</TableCaption>
           <TableHeader className = "THeader">
             <TableRow>
               <TableHead >Set</TableHead>
@@ -129,7 +129,7 @@ export default function Home() {
 
       {showRunningTable && (
         <Table>
-          <TableCaption>RUNNING WORKOUT SUMMARY!!</TableCaption>
+          <TableCaption>RUNNING WORKOUT SUMMARY!!\n ideally this is where the AI will interpret the results based off sthe user inputs</TableCaption>
           <TableHeader className='THeader'>
             <TableRow>
               <TableHead className="w-[100px]">Interval</TableHead>
