@@ -1,9 +1,11 @@
 "use client";
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/Table';
+
 export default function Home() {
   const [showTable, setShowTable] = useState(false);
   const [rows, setRows] = useState([{ weight: '', reps: '', difficulty: '' }]);
+  const [jsonData, setJsonData] = useState('');
 
   const handleButtonClick = () => setShowTable(true);
 
@@ -27,6 +29,11 @@ export default function Home() {
     const newRows = [...rows];
     newRows[index].difficulty = value;
     setRows(newRows);
+  };
+
+  const generateJsonData = () => {
+    const data = JSON.stringify(rows);
+    setJsonData(data);
   };
 
   return (
@@ -68,6 +75,8 @@ export default function Home() {
       )}
 
       {showTable && <button onClick={addRow}>Add Row</button>}
+      {showTable && <button onClick={generateJsonData}>Display JSON</button>}
+      {jsonData && <pre>{jsonData}</pre>}
     </main>
   );
 }
