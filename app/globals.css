@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 #button {
-  background-color: brown;
   border: 5px;
+  display: flex;
 }
 
-#genRow{
-background-color: beige;
+#genRow {
+  background-color: beige;
 }
 
-.THeader{
+.THeader {
   color: red;
-background-color: blanchedalmond
-;}
+  background-color: blanchedalmond;
+}
 
 @layer base {
   :root {
