@@ -91,15 +91,15 @@ export default function Home() {
   return (
     <main>
       <h1>hi</h1>
-      <button onClick={handleWeightliftingButtonClick}>Weightlifting</button>
-      <button onClick={handleRunningButtonClick}>Running</button>
+      <button id = "button" onClick={handleWeightliftingButtonClick}>Weightlifting</button>
+      <button id = "button" onClick={handleRunningButtonClick}>Running</button>
 
       {showWeightliftingTable && (
         <Table>
           <TableCaption>WEIGHTLIFTING WORKOUT SUMMARY!!</TableCaption>
-          <TableHeader>
+          <TableHeader className = "THeader">
             <TableRow>
-              <TableHead className="w-[100px]">Set</TableHead>
+              <TableHead >Set</TableHead>
               <TableHead>Weight</TableHead>
               <TableHead>Reps</TableHead>
               <TableHead className="text-right">Difficulty</TableHead>
@@ -107,7 +107,7 @@ export default function Home() {
           </TableHeader>
           <TableBody>
             {weightliftingRows.map((row, index) => (
-              <TableRow key={index}>
+              <TableRow id = "genRow" key={index}>
                 <TableCell className="font-medium">{index + 1}</TableCell>
                 <TableCell><input type="text" value={row.weight} onChange={(e) => handleWeightliftingWeightChange(e.target.value, index)} /></TableCell>
                 <TableCell><input type="text" value={row.reps} onChange={(e) => handleWeightliftingRepsChange(e.target.value, index)} /></TableCell>
@@ -130,10 +130,9 @@ export default function Home() {
       {showRunningTable && (
         <Table>
           <TableCaption>RUNNING WORKOUT SUMMARY!!</TableCaption>
-          <TableHeader>
+          <TableHeader className='THeader'>
             <TableRow>
-              <TableHead className="w-[100px]">Set</TableHead>
-              <TableHead>Interval</TableHead>
+              <TableHead className="w-[100px]">Interval</TableHead>
               <TableHead>Distance</TableHead>
               <TableHead>Time</TableHead>
               <TableHead className="text-right">Difficulty</TableHead>
@@ -141,9 +140,8 @@ export default function Home() {
           </TableHeader>
           <TableBody>
             {runningRows.map((row, index) => (
-              <TableRow key={index}>
+              <TableRow id = "genRow" key={index}>
                 <TableCell className="font-medium">{index + 1}</TableCell>
-                <TableCell><input type="text" value={row.interval} onChange={(e) => handleRunningIntervalChange(e.target.value, index)} /></TableCell>
                 <TableCell><input type="text" value={row.distance} onChange={(e) => handleRunningDistanceChange(e.target.value, index)} /></TableCell>
                 <TableCell><input type="text" value={row.time} onChange={(e) => handleRunningTimeChange(e.target.value, index)} /></TableCell>
                 <TableCell className="text-right">
@@ -162,12 +160,12 @@ export default function Home() {
         </Table>
       )}
 
-      {showWeightliftingTable && <button onClick={addWeightliftingRow}>Add Weightlifting Row</button>}
-      {showRunningTable && <button onClick={addRunningRow}>Add Running Row</button>}
-      {showWeightliftingTable && <button onClick={generateWeightliftingJsonData}>Display Weightlifting JSON</button>}
-      {showRunningTable && <button onClick={generateRunningJsonData}>Display Running JSON</button>}
-      {weightliftingJsonData && <><button onClick={clearWeightliftingJsonData}>Clear Weightlifting JSON</button><pre>{weightliftingJsonData}</pre></>}
-      {runningJsonData && <><button onClick={clearRunningJsonData}>Clear Running JSON</button><pre>{runningJsonData}</pre></>}
+      {showWeightliftingTable && <button id = "button" onClick={addWeightliftingRow}>Add Weightlifting Row</button>}
+      {showRunningTable && <button id = "button" onClick={addRunningRow}>Add Running Row</button>}
+      {showWeightliftingTable && <button id = "button" onClick={generateWeightliftingJsonData}>Display Weightlifting JSON</button>}
+      {showRunningTable && <button id = "button" onClick={generateRunningJsonData}>Display Running JSON</button>}
+      {weightliftingJsonData && <><button id = "button" onClick={clearWeightliftingJsonData}>Clear Weightlifting JSON</button><pre>{weightliftingJsonData}</pre></>}
+      {runningJsonData && <><button id = "button" onClick={clearRunningJsonData}>Clear Running JSON</button><pre>{runningJsonData}</pre></>}
     </main>
   );
 }
