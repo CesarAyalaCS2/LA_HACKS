@@ -1,7 +1,6 @@
 "use client";
 import { useState } from 'react';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/Table';
-
 export default function Home() {
   const [showTable, setShowTable] = useState(false);
   const [rows, setRows] = useState([{ weight: '', reps: '', difficulty: '' }]);
@@ -35,7 +34,7 @@ export default function Home() {
       <h1>hi</h1>
       <button onClick={handleButtonClick}>BUTTON TO RENDER!</button>
       
-      {showTable && ( // this will render if showTable is true
+      {showTable && (
         <Table>
           <TableCaption>YOUR WORKOUT SUMMARY!!</TableCaption>
           <TableHeader>
@@ -68,7 +67,7 @@ export default function Home() {
         </Table>
       )}
 
-      <button onClick={addRow}>Add Row</button>
+      {showTable && <button onClick={addRow}>Add Row</button>}
     </main>
   );
 }
